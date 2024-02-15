@@ -1,79 +1,193 @@
+import React from "react";
+import {
+  IconButton,
+  Typography,
+  List,
+  ListItem,
+  ListItemPrefix,
+  Alert,
+  Drawer,
+  Card,
+} from "@material-tailwind/react";
+import {
+  HomeModernIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/solid";
+import {
+  CubeTransparentIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
-function SideBar() {
+export function SidebarWithBurger() {
+  const [openAlert, setOpenAlert] = React.useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
+
   return (
     <>
-      <aside
-        id="sidebar"
-        className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0"
-        aria-label="Sidebar"
-      >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <h1 className="title p-5 justify-center text-center">TEMPEST</h1>
-          <ul className="mt-5 space-y-2 font-medium">
-            <Link to="/">
-            <li>
-              <a
+      <IconButton variant="text" size="lg" onClick={openDrawer}>
+        {isDrawerOpen ? (
+          <XMarkIcon className="h-8 w-8 stroke-2" />
+        ) : (
+          <Bars3Icon className="h-8 w-8 stroke-2" />
+        )}
+      </IconButton>
+      <Drawer open={isDrawerOpen} onClose={closeDrawer}>
+        <Card
+          color="transparent"
+          shadow={false}
+          className="h-[calc(100vh-2rem)] w-full p-4"
+        >
+          <div className="mb-2 flex items-center gap-4 p-4">
+            <img
+              src="https://docs.material-tailwind.com/img/logo-ct-dark.png"
+              alt="brand"
+              className="h-8 w-8"
+            />
+            <Typography variant="h5" color="blue-gray">
+              Tempest
+            </Typography>
+          </div>
+          <List>
+            <hr className="my-0 border-blue-gray-50" />
+            <ListItem>
+              <ListItemPrefix>
+                <HomeModernIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Dashboard
+            </ListItem>
+            <ListItem>
+              <ListItemPrefix>
+                <UserCircleIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Account
+            </ListItem>
+            <ListItem>
+              <ListItemPrefix>
+                <Cog6ToothIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Settings
+            </ListItem>
+          </List>
+          <Alert
+            open={openAlert}
+            className="mt-auto"
+            onClose={() => setOpenAlert(false)}
+          >
+            <CubeTransparentIcon className="mb-4 h-12 w-12" />
+            <Typography variant="h6" className="mb-1">
+              Sign Up
+            </Typography>
+            <Typography variant="small" className="font-normal opacity-80">
+              Sign up to Tempest Weather to customise your experience to your
+              liking.
+            </Typography>
+            <div className="mt-4 flex gap-3">
+              <Typography
+                as="a"
                 href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                variant="small"
+                className="font-medium opacity-80"
+                onClick={() => setOpenAlert(false)}
               >
-                <svg
-                  className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 21"
-                >
-                  <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                  <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-                </svg>
-                <span className="ms-3">Dashboard</span>
-              </a>
-            </li>
-            </Link>
-            <Link to="/settings">
-            <li>
-              <a
+                Dismiss
+              </Typography>
+              <Typography
+                as="a"
                 href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                variant="small"
+                className="font-medium"
               >
-                <svg
-                  className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z" />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Settings</span>
-              </a>
-            </li>
-            </Link>
-            <Link to="/account">
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <svg
-                  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 448 512"
-                >
-                  <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Account</span>
-              </a>
-            </li>
-            </Link>
-          </ul>
-        </div>
-      </aside>
+                Sign Up
+              </Typography>
+            </div>
+          </Alert>
+        </Card>
+      </Drawer>
     </>
   );
 }
 
-export default SideBar;
+export function Sidebar() {
+  const [openAlert, setOpenAlert] = React.useState(true);
+
+  return (
+    <Card
+      className="sidebar h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5"
+      color="gray-50"
+      shadow={false}
+    >
+      <div className="mb-2 flex items-center justify-center gap-4 p-4">
+        <Typography className="skyer" variant="h3" color="white">
+          TEMPEST
+        </Typography>
+      </div>
+      <List>
+        <hr className="mb-3 white" />
+        <Link to="/">
+          <ListItem className="text-white text-base aeronaut">
+            <ListItemPrefix>
+              <HomeModernIcon className="h-5 w-5" color="white" />
+            </ListItemPrefix>
+            <p className="pt-1">Dashboard</p>
+          </ListItem>
+        </Link>
+        <Link to="/settings">
+          <ListItem className="text-white text-base aeronaut">
+            <ListItemPrefix>
+              <Cog6ToothIcon className="h-5 w-5" color="white" />
+            </ListItemPrefix>
+            <p className="pt-1">Settings</p>
+          </ListItem>
+        </Link>
+        <Link to="/account">
+          <ListItem className="text-white text-base aeronaut">
+            <ListItemPrefix>
+              <UserCircleIcon className="h-5 w-5" color="white" />
+            </ListItemPrefix>
+            <p className="pt-1">Account</p>
+          </ListItem>
+        </Link>
+      </List>
+      <Alert
+        open={openAlert}
+        className="mt-auto"
+        onClose={() => setOpenAlert(false)}
+      >
+        <CubeTransparentIcon className="mb-4 h-12 w-12" />
+        <Typography variant="h6" className="mb-1">
+          Sign Up
+        </Typography>
+        <Typography variant="small" className="font-normal opacity-80">
+          Sign up to Tempest to customise your experience to your liking.
+        </Typography>
+        <div className="mt-4 flex gap-3">
+          <Typography
+            as="a"
+            href="#"
+            variant="small"
+            className="font-medium opacity-80"
+            onClick={() => setOpenAlert(false)}
+          >
+            Dismiss
+          </Typography>
+          <Typography
+            as="a"
+            href="#"
+            variant="small"
+            className="font-medium white"
+          >
+            Sign Up
+          </Typography>
+        </div>
+      </Alert>
+    </Card>
+  );
+}
+
+export default Sidebar;

@@ -2,6 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Skyer";
+    src: url("../src/assets/fonts/Skyer.otf");
+}
+
+@font-face {
+    font-family: "Aeronaut";
+    src: url("../src/assets/fonts/Aeronaut.otf");
+}
+
+@font-face {
+    font-family: "Aquatico";
+    src: url("../src/assets/fonts/Aquatico.otf");
+}
+
 .background {
-  background-image: url("../src/assets/london-bg.jpg");
+    width: 100vw;
+    height: 100vw;
+}
+
+.bg-image {
+    background-image: url("./assets/london-bg.jpg");
+
+    /* Add the blur effect */
+    filter: blur(4px) brightness(0.5);
+    -webkit-filter: blur(4px) brightness(0.5);
+
+    /* Full height */
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sidebar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+}
+
+.skyer {
+    font-family: "Skyer", sans-serif;
+}
+
+.aeronaut {
+    font-family: "Aeronaut", sans-serif;
+}
+
+.aquatico {
+    font-family: "Aquatico", sans-serif;
 }
