@@ -19,21 +19,17 @@
 
 .background {
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
 }
 
 .bg-image {
     background-image: url("./assets/london-bg.jpg");
 
-    /* Add the blur effect */
-    filter: blur(4px) brightness(0.5);
-    -webkit-filter: blur(4px) brightness(0.5);
-
     /* Full height */
     position: fixed;
     left: 0;
     right: 0;
-    height: 100%;
+    height: 100vh;
 
     /* Center and scale the image nicely */
     background-position: center;
@@ -43,6 +39,7 @@
 
 .sidebar {
     background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 0;
 }
 
