@@ -36,7 +36,7 @@ function Graph() {
       discrete: [
         {
           seriesIndex: 0,
-          dataPointIndex: 2,
+          dataPointIndex: 3,
           fillColor: "#fff",
           strokeColor: "#fff",
           size: 6,
@@ -106,7 +106,7 @@ function Graph() {
     series: [
       {
         name: "Temperature",
-        data: [12, 14, 13, 16, 12],
+        data: [12, 12, 14, 13, 16, 12, 12],
         zIndex: 0,
       },
     ],
