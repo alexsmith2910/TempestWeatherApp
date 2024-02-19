@@ -8,7 +8,7 @@ import {
 
 function UVIndexCard() {
   return (
-    <Card className="w-96 opacity-100" variant="gradient" color="gray">
+    <Card className="w-64 opacity-100" variant="gradient" color="gray">
       <CardBody>
         <svg
           xmlns="http://www.w3.org/2000/svg"

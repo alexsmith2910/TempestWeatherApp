@@ -4,6 +4,8 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import SideBar from "./components/SideBar/SideBar";
+import SignUp from "./components/Authentication/SignUp";
+import SignIn from "./components/Authentication/SignIn";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/settings" element={<Settings />} />
                     <Route path="/account" element={<Account />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/signin" element={<SignIn />} />
                     <Route path="*" element={<h1>Error</h1>} />
                   </Routes>
                 </div>

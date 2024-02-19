@@ -42,7 +42,7 @@ function Dashboard() {
         <div className="weather-more">
           <div className="flex flex-col items-end gap-5">
             <PercipitationCard />
-            <UVIndexCard />
+            {/* <UVIndexCard /> */}
           </div>
         </div>
       </div>

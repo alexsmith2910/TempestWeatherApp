@@ -176,14 +176,17 @@ export function Sidebar() {
           >
             Dismiss
           </Typography>
-          <Typography
-            as="a"
-            href="#"
-            variant="small"
-            className="font-medium white"
-          >
-            Sign Up
-          </Typography>
+          <Link to={"/signup"}>
+            <Typography
+              as="a"
+              href="#"
+              variant="small"
+              className="font-medium white"
+              onClick={() => setOpenAlert(false)}
+            >
+              Sign Up
+            </Typography>
+          </Link>
         </div>
       </Alert>
     </Card>
