@@ -1,7 +1,6 @@
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import Graph from "../components/Graph/Graph";
 import PercipitationCard from "../components/WeatherCards/PercipitationCard";
-import UVIndexCard from "../components/WeatherCards/UVIndexCard";
 
 function Dashboard() {
   return (
@@ -42,7 +41,6 @@ function Dashboard() {
         <div className="weather-more">
           <div className="flex flex-col items-end gap-5">
             <PercipitationCard />
-            {/* <UVIndexCard /> */}
           </div>
         </div>
       </div>

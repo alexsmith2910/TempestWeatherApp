@@ -1,7 +1,8 @@
+import { ApexOptions } from "apexcharts";
 import ReactApexChart from "react-apexcharts";
 
 function Graph() {
-  const chartOptions = {
+  const chartOptions: ApexOptions = {
     chart: {
       type: "line",
       toolbar: { show: false },
@@ -47,8 +48,6 @@ function Graph() {
       radius: 5,
       offsetX: 0,
       offsetY: 0,
-      onClick: null,
-      onDblClick: null,
       showNullDataPoints: true,
       hover: {
         size: 20,
@@ -66,7 +65,6 @@ function Graph() {
       axisTicks: { show: false },
     },
     yaxis: {
-      type: "numeric",
       labels: { show: false },
       axisBorder: { show: false },
       axisTicks: { show: false },
