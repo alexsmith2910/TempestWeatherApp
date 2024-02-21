@@ -1,7 +1,51 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/AuthProvider";
 
 function SignUp() {
-  // add sign-up functionality
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState(<></>);
+
+  const auth = useAuth();
+  const handleSubmitEvent = (e) => {
+    e.preventDefault();
+    console.log(input.email, input.password);
+    if (input.email !== "" && input.password !== "") {
+      auth.loginAction(input);
+      return;
+    }
+
+    let msg = "";
+    if (input.email == "") {
+      msg = "Please enter an email address.";
+    } else if (input.password == "") {
+      msg = "Please enter a password.";
+    } else {
+      msg = "An unexpected error occured.";
+    }
+
+    setErrorMessage(
+      <div
+        className="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 text-sm mt-4"
+        role="alert"
+      >
+        <p className="font-bold">Houston, we have a problem...</p>
+        <p>{msg}</p>
+      </div>
+    );
+  };
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <div className="flex flex-row min-h-screen justify-center items-center">
